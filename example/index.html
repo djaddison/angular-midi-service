@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<!--
+ Copyright 2015 David Addison
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+
+<html ng-app="application">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		
+		<!--
+			<base> is defined so that index.html will work if it is 
+			opened directly in a browser or served using gulp
+		-->
+		<base href="../">
+
+		<script src="example/vendor/angular.js"></script>
+		<script src="example/application.js"></script>
+		<script src="src/MIDIService.js"></script>
+		<script src="src/MIDIExtend.js"></script>
+
+		<style>
+			body {
+				font-family: sans-serif;
+				font-size: 13px;
+			}
+			h3 {
+				margin: 30px 0 0 0;
+			}
+			ul {
+				margin: 0;
+			}
+			header {
+				margin-top: 30px;
+			}
+			.trigger-pad {
+				margin-top: 10px;
+				width: 200px;
+				height: 50px;
+				background: #E2F1FF;
+				border: 1px solid #63A1D8;
+				border-radius: 9px;
+				line-height: 50px;
+				text-align: center;
+				color: #5F93C1;
+				text-transform: uppercase;
+				cursor: pointer;
+				user-select: none;
+				-webkit-user-select: none;
+			}
+		</style>
+
+		<title>MIDIService</title>
+	</head>
+	<body>
+		<div class="application" ng-controller="appController as vm">
+
+			<h1>Angular MIDIService</h1>
+			<p>This example application requires:</p>
+			<ul>
+				<li>Chrome (43+)</li>
+				<li>Web MIDI flag enabled for earlier version chrome</li>
+				<li>Sound generating software or device that has MIDI input</li>
+			</ul>
+
+			<header>
+				<select ng-model="vm.outputId" ng-options="out.id as out.name for out in vm.ports.outputs" ng-change="vm.outputSelected()"></select>
+				<input type="number" min="1" max="127" ng-model="vm.velocity">
+			</header>
+
+			<div class="trigger-pad" ng-mousedown="vm.sendChord()">send Chord</div>
+			<div class="trigger-pad" ng-mousedown="vm.startChord()" ng-mouseup="vm.endChord()" ng-mouseleave="vm.endChord()">start/end Chord</div>
+
+			<h3>Active MIDI Devices</h3>
+			<ul>
+				<li ng-repeat="input in vm.ports.inputs">Input: {{input.name}}</li>
+				<li ng-repeat="output in vm.ports.outputs">Output: {{output.name}}</li>
+			</ul>
+		</div>
+	</body>
+</html>
