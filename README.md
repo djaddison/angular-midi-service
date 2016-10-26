@@ -46,4 +46,4 @@ Angular MIDIService's full source code and documentation is available under the 
 ##Contact
 Author: David Addison
 
-Email: x@x.com
+Email: djaddison.vcs@gmail.com
