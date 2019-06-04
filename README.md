@@ -1,16 +1,16 @@
-##Angular MIDIService
+## Angular MIDIService
 Angular MIDIService is an angular.js 1.4+ service that wraps web midi functionality.
 
-##Getting started
+## Getting started
 For a complete example see the application in `example/index.html`
 
-###HTML
+### HTML
 ```html
 <script src="path/to/MIDIService.js"></script>
 <script src="path/to/MIDIExtend.js"></script>
 ```
 
-###JS
+### JS
 ```js
 // Add the service to the list of angular dependencies
 angular.module('application', ['MIDIService'])
@@ -40,10 +40,10 @@ MIDIService.requestMIDIAccess( MIDIServiceConfig ).then(function(){
 });
 ```
 
-##Open source
+## Open source
 Angular MIDIService's full source code and documentation is available under the Apache 2.0 license.
 
-##Contact
+## Contact
 Author: David Addison
 
 Email: djaddison.vcs@gmail.com
